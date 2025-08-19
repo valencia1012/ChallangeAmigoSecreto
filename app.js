@@ -18,6 +18,20 @@ function agregarAmigo() {
         alert("Por favor, inserte un nombre.");
         return;
     }
+    // Validar que solo sean letras y espacios
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/.test(nombre)) {
+        alert("Por favor, ingrese solo texto. No se números ni simbolos.");
+        input.value = ''; // Limpiar el campo de entrada
+        return;
+    }
+    // Validar que el nombre no esté duplicado (ignorando mayúsculas/minúsculas y espacios)
+    let nombreNormalizado = nombre.toLowerCase().replace(/\s+/g, '');
+    let existe = amigos.some(a => a.toLowerCase().replace(/\s+/g, '') === nombreNormalizado);
+    if (existe) {
+        alert(`El nombre "${nombre}" ya está añadido.`);
+        input.value = '';
+        return;
+    }
 
     // Actualizar el array de amigos
     amigos.push(nombre);
@@ -26,26 +40,26 @@ function agregarAmigo() {
     input.value = '';
     mostrarAmigos();
 
-     // Habilitar el botón de nuevo sorteo si hay al menos un amigo
+    // Habilitar el botón de nuevo sorteo si hay al menos un amigo
     document.querySelector('#reiniciar').removeAttribute('disabled');
 
 }
-    // Mostrar la lista actualizada de amigos
+// Mostrar la lista actualizada de amigos
 function mostrarAmigos() {
     let lista = document.getElementById('listaAmigos');
 
     let html = '';
 
     // Recorrer el array amigos y agregar cada nombre como <li>
-    amigos.forEach(function(nombre) {
+    amigos.forEach(function (nombre) {
         html += `<li>${nombre}</li>`;
     });
-     // Limpiar la lista antes de agregar nuevos elementos
-    lista.innerHTML= html;
+    // Limpiar la lista antes de agregar nuevos elementos
+    lista.innerHTML = html;
 }
 // Función para sortear un amigo al azar
 function sortearAmigo() {
-        // Validar que haya al menos un amigo en la lista
+    // Validar que haya al menos un amigo en la lista
     if (amigos.length === 0) {
         alert("No hay amigos en la lista para sortear.");
         return;
