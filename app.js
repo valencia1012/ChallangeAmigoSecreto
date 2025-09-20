@@ -20,7 +20,7 @@ function agregarAmigo() {
     }
     // Validar que solo sean letras y espacios
     if (!/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/.test(nombre)) {
-        alert("Por favor, ingrese solo texto. No se números ni simbolos.");
+        alert("Por favor, ingrese solo texto. No se permiten números ni simbolos.");
         input.value = ''; // Limpiar el campo de entrada
         return;
     }
