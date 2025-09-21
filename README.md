@@ -24,7 +24,7 @@ Este proyecto consiste en una aplicación web simple que permite al usuario agre
 - ![alt text](assets/play_circle_outline.png) 
 
 ## Acceso a mi repositorio 
-
+https://challange-amigo-secreto-pi.vercel.app/
 
 
 ## Autor
